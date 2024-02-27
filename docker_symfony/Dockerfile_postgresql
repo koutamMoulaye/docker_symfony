@@ -1,0 +1,14 @@
+# Utiliser l'image officielle de PostgreSQL
+FROM postgres:16-alpine
+
+# Exposer le port PostgreSQL par défaut
+EXPOSE 5432
+
+# Configurer les variables d'environnement pour PostgreSQL
+ENV POSTGRES_DB=test \
+    POSTGRES_USER=user \
+    POSTGRES_PASSWORD=pass \
+    PGDATA=/var/lib/postgres/data
+
+# Définir le point de montage pour les données persistantes
+VOLUME ["db-data:/var/lib/postgresql/data:rw"]
